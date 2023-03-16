@@ -34,5 +34,11 @@
    > event: type2
    > data: An event of type2
 
+## 트러블슈팅
+1. WEB -> Server subscribe 시 http status 503 Service Unavailable 발생
+   > Server에서 SseEmitter 연결 성공에 대한 첫번째 응답을 내려주지 않아 WEB에서 서버 응답을 받지 못해 발생
+   > WEB에서 text/event-stream request 후 status가 pending 상태로 서버 메시지 수신을 대기하다 발생하게 됨
+   > 따라서, 서버 subscribe 처리 후 연결 성공에 대한 메시지 응답하면 200 status 확인되며 연결 됨
+
 # 참고 사이트
 * [demo-spring-sse](https://github.com/aliakh/demo-spring-sse)
